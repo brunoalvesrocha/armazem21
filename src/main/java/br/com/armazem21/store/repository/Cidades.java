@@ -1,0 +1,18 @@
+package br.com.armazem21.store.repository;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.com.armazem21.store.model.Cidade;
+import br.com.armazem21.store.model.Estado;
+import br.com.armazem21.store.repository.helper.cidade.CidadesQueries;
+
+public interface Cidades extends JpaRepository<Cidade, Long>, CidadesQueries {
+
+	public List<Cidade> findByEstadoCodigo(Long codigoEstado);
+
+	public Optional<Cidade> findByNomeAndEstado(String nome, Estado estado);
+	
+}
